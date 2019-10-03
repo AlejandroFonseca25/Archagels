@@ -1,3 +1,6 @@
+package ui;
+
+import package.model.*;
 import java.util.Scanner;
 
 public class Menu

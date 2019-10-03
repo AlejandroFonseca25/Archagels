@@ -1,3 +1,5 @@
+package model;
+
 public class Candle
 {
 	private String color; 

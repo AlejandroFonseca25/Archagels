@@ -1,3 +1,5 @@
+package model;
+
 public class Archangel
 {
 	private String name; 
