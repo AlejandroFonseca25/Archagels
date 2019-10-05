@@ -65,7 +65,7 @@ public class Archangel
 
 	public String getPhoto ()
 	{
-		return this.name;
+		return this.photo;
 	}
 
 	public String getPrayer ()
