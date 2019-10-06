@@ -230,6 +230,7 @@ public class Legion
 			case 6:
 			{
 				monthString = "June";
+				break;
 			}
 
 			case 7:
