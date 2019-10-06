@@ -24,6 +24,7 @@ public class Legion
 		return this.archangelArray;
 	}
 
+
 	//FR
 	public void addArchangel(String name, String photo, String prayer, String power, int month, int day, String color, int size, String essence, double illuminanceDegree)
 	{
@@ -180,13 +181,14 @@ public class Legion
 				System.out.println("\n~Size: " + size + ".");
 				System.out.println("\n~Essence: " + archangelArray.get(c).getCandle().getEssence() + ".");
 				System.out.println("\n~Illuminance degree: " + archangelArray.get(c).getCandle().getIlluminanceDegree());
+				
 				done = true;
 			} 
 		}
 
 		if (done == false)
 		{
-			System.out.println("\nArchangel name or power doesn't exist.");
+			System.out.println("\n!!!!| Error: Archangel name or power doesn't exist. |!!!!");
 		}
 	}
 
@@ -268,10 +270,54 @@ public class Legion
 
 			default:
 			{
-				monthString = "Cannot convert";
+				monthString = "!!!!| Error: Cannot convert. |!!!!";
 			}
 		}
 
 		return monthString;
+	}
+
+	public String printDates (int decision, int month)
+	{
+		String msg = "";
+		String monthString = "";
+
+		if (decision == 1)
+		{
+			boolean nothing = true;
+			
+			monthString = convertMonth(month);
+
+			msg += "\n~~~| " + monthString + " |~~~\n";
+
+			for (int i = 0; i < archangelArray.size(); i++)
+			{
+				if (archangelArray.get(i).getMonth() == month)
+				{
+					msg += "\narchangel: " + archangelArray.get(i).getName() + ".\nDay: " + archangelArray.get(i).getDay() + "\nCandle color: " + archangelArray.get(i).getCandle().getColor() + ".\nCandle essence: " + archangelArray.get(i).getCandle().getEssence() + ".\n";
+					nothing = false;
+				}
+			}
+
+			if (nothing == true)
+			{
+				msg = "\nxxxx| No celebration dates were found in this month. |xxxx";
+			}
+		}
+
+		else 
+		{
+			msg += "\n";
+			for (int i = 0; i < archangelArray.size(); i++)
+			{
+				monthString = convertMonth(archangelArray.get(i).getMonth());
+
+				msg += archangelArray.get(i).getName() + ": " + monthString + " " + archangelArray.get(i).getDay() + ", ";
+			}
+			msg = msg.substring(0,msg.length() - 2);
+			msg += ".";
+		}
+	
+		return msg;
 	}
 }

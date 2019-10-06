@@ -14,6 +14,7 @@ public class Menu
 	{	
 		Menu menu = new Menu ();
 		menu.mainMenu();
+
 	}
 
 	//Constructor
@@ -24,7 +25,9 @@ public class Menu
 	}
 
 
-	//Menus
+	//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+	// 															Main Menu
+	//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	public void mainMenu  ()
 	{
 		boolean on = true; 
@@ -66,7 +69,9 @@ public class Menu
 			}
 		}
 	}
-
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$	
+//																Creation menu
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	public int creationMenu (int angelNumber)
 	{
 		boolean good; 
@@ -142,6 +147,9 @@ public class Menu
 		return angelNumber;
 	}
 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$	
+//																Detail menu
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	public void searchMenu ()
 	{
 		System.out.println("                                 <<<Archangel detail menu>>>                                 ");
@@ -152,9 +160,56 @@ public class Menu
 
 	}
 
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$	
+//																Dates mneu
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	public void datesMenu ()
 	{
+		int decision = 0;
+		String msg = "";
 
+		System.out.println("                                 <<<Archangel dates menu>>>                                  ");
+		
+		System.out.println("\nSelect one search option:");
+		System.out.println("\n1 = Display by month.\n2 = Display all.");
+
+		decision = reader.nextInt();
+
+		switch (decision)
+		{
+			case 1:
+			{
+				System.out.println("\nEnter the month (1 - 12).");
+				int month = reader.nextInt();
+
+				boolean hi = maximumSuperior.monthValidator(month);
+
+				if (hi == true)
+				{
+					msg = maximumSuperior.printDates (decision, month);
+				}
+
+				else
+				{
+					System.out.println("!!!!| Error: Not a valid month. Must be between 1 and 12. |!!!!");
+				}
+
+				System.out.println(msg);
+				break;
+			}
+
+			case 2:
+			{
+				msg = maximumSuperior.printDates (decision, 0);
+				System.out.println(msg);	
+				break;
+			}
+
+			default:
+			{
+				System.out.println("xxxx| Invalid option. |xxxx");
+			}
+		}
 	}
 
 	public void init ()
