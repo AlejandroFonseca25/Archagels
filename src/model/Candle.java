@@ -18,27 +18,7 @@ public class Candle
 		this.essence = essence;
 		this.illuminanceDegree = illuminanceDegree;
 	}
-	
-	//Set methods
-	public void setColor (String color)
-	{
-		this.color = color;
-	}
-	
-	public void setSize (int size)
-	{
-		this.size = size;
-	}
 
-	public void setEssence (String essence)
-	{
-		this.essence = essence;
-	}
-
-	public void setIlluminanceDegree (double illuminanceDegree)
-	{
-		this.illuminanceDegree = illuminanceDegree;
-	}
 
 	//Get methods
 	public String getColor ()

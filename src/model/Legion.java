@@ -12,20 +12,21 @@ public class Legion
 		archangelArray= new ArrayList<Archangel>();
 	}
 
-	//Set methods
-	public void setArchangelArray (ArrayList<Archangel> archangelArray)
-	{
-		this.archangelArray = archangelArray;
-	}
-
-	//Get methods 
-	public ArrayList<Archangel> getArchangelArray ()
-	{
-		return this.archangelArray;
-	}
-
-
 	//FR
+
+	/**This method creates and adds an archangel. It also receives and sends the information for the creation of a candle.<br>
+	*<b>post:</b>An archangel is created and added to Legion's arrayList.
+	*@param name. A String containing the name of the archangel. Must end with "el".
+	*@param photo. A String containing the url of the archangel's photo. 
+	*@param prayer. A String containing the prayer of the archangel.
+	*@param power. A String containing the power of the archangel.
+	*@param month. An integer representing the month of the celebration date. Must be between 1 and 12.
+	*@param day. An integer representing the day of the celebration date. Must be between 1 and 31.
+	*@param color. A String containing the color of the candle.
+	*@param size. An integer representing the size of the candle.
+	*@param essence. A String containing the aroma of the candle.
+	*@param illuminanceDegree. A double representing the illuminance degree of the candle. Cannot be 0. Cannot be negative.
+	*/
 	public void addArchangel(String name, String photo, String prayer, String power, int month, int day, String color, int size, String essence, double illuminanceDegree)
 	{
 		Candle candle = null;
@@ -34,7 +35,15 @@ public class Legion
 		archangel.setCandle(candle);
 		archangelArray.add(archangel);
 	}
-
+	/**This method checks if the name is valid for an archangel.<br>
+	*<b>Pre:</b> name is a String.
+	*<b>Post:</b> The name is valid, boolean is true.
+	*The name is already taken, boolean is false.
+	*The name doesn't end with "el", furthermore is invalid. boolean is false.
+	*@param name. The name of the archangel that'll be checked.
+	*@return True if name's valid.
+	*False if name's invalid or already exists.
+	*/
 	public boolean nameValidator(String name)
 	{
 		if (name.length() != 1)
@@ -76,7 +85,15 @@ public class Legion
 			return false;
 		}
 	}
-
+	
+	/**This method checks if the power already exists.<br>
+	*<b>Pre:</b> power is a String.
+	*<b>Post:</b> The power is not being used, boolean is true.
+	*The power is already taken, boolean is false.
+	*@param power. The power of the archangel that'll be checked.
+	*@return True if power's available.
+	*False if power's unavailable.
+	*/
 	public boolean powerValidator (String power)
 	{
 		boolean error = false;
@@ -101,6 +118,14 @@ public class Legion
 		}
 	}
 
+	/**This method checks if the month is between 1 and 12.<br>
+	*<b>Pre:</b> month is a natural integer.
+	*<b>Post:</b> The month's correct, boolean is true.
+	*The month's incorrect, boolean is false.
+	*@param month. The month number that'll be checked.
+	*@return True if month's correct.
+	*False if month's incorrect.
+	*/
 	public boolean monthValidator (int month)
 	{
 		if (month > 12 || month < 1)
@@ -115,6 +140,14 @@ public class Legion
 		}
 	}
 
+	/**This method checks if the day is between 1 and 31.<br>
+	*<b>Pre:</b> day is a natural integer.
+	*<b>Post:</b> The day's correct, boolean is true.
+	*The day's incorrect, boolean is false.
+	*@param day. The day number that'll be checked.
+	*@return True if day's correct.
+	*False if day's incorrect.
+	*/
 	public boolean dayValidator (int day)
 	{
 		if (day > 31 || day < 1)
@@ -129,6 +162,14 @@ public class Legion
 		}
 	}
 
+	/**This method checks if the size is between 1 and 3.<br>
+	*<b>Pre:</b> size is a natural integer.
+	*<b>Post:</b> The size's correct, boolean is true.
+	*The size's incorrect, boolean is false.
+	*@param size. The size number that'll be checked.
+	*@return True if size's correct.
+	*False if size's incorrect.
+	*/
 	public boolean sizeValidator (int size)
 	{
 		if (size < 1 || size > 3)
@@ -143,6 +184,33 @@ public class Legion
 		}
 	}
 
+	/**This method checks if the illuminance degree is bigger than zero.<br>
+	*<b>Pre:</b> illuminance  degree is a rational integer.
+	*<b>Post:</b> The illuminance degree's correct, boolean is true.
+	*The illuminance degree's incorrect, boolean is false.
+	*@param illuminanceDegree. The illuminance degree that'll be checked.
+	*@return True if illuminance degree's correct.
+	*False if illuminance degree's incorrect.
+	*/
+	public boolean illuminanceValidator (double illuminanceDegree)
+	{
+		if (illuminanceDegree <= 0)
+		{
+			System.out.println("!!!!| Error: Invalid illuminance degree. |!!!!");
+			return false;
+		}
+
+		else 
+		{
+			return true;
+		}
+	}
+
+	/**This method translates the size's number into String and prints the details of the archangel's related to the keyword.<br>
+	*<b>Post:</b> The archangel's details were printed.
+	*An error is printed.
+	*@param key. A String containing either the name or the power of the archangel. 
+	*/
 	public void displayArchangelInfo(String key)
 	{
 		boolean done = false;
@@ -191,7 +259,12 @@ public class Legion
 			System.out.println("\n!!!!| Error: Archangel name or power doesn't exist. |!!!!");
 		}
 	}
-
+	/**This method converts a month from number to text.<br>
+	*<b>Pre:</b>Month has to be a natural integer.
+	*<b>Post:</b>Month number is converted to its equivalent in text.
+	*@param month. Month number that'll be converted.
+	*@return The month in letters.
+	*/
 	public String convertMonth (int month)
 	{
 		String monthString;
@@ -277,7 +350,14 @@ public class Legion
 
 		return monthString;
 	}
-
+/**This method concatenates the celebration dates based on the decision of the user.<br>
+*<b>Post:</b> The dates were concatenated in a String.
+*No celebration dates were found between the month.
+*@param decision. A number that decides which process is followed.
+*@param month. The month in number.
+*@return The celebration dates in a String.
+*An message notifying that no celebration were found within the month.
+*/
 	public String printDates (int decision, int month)
 	{
 		String msg = "";

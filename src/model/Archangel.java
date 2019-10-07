@@ -21,38 +21,8 @@ public class Archangel
 		this.candle = candle;
 	}
 
-	//Set methods
-	public void setName (String name)
-	{
-		this.name = name;
-	}
-
-	public void setPhoto (String photo)
-	{
-		this.photo = photo;
-	}
-
-	public void setPrayer (String prayer)
-	{
-		this.prayer = prayer;
-	}
-
-	public void setPower (String power)
-	{
-		this.power = power; 
-	}
-
-	public void setMonth (int month)
-	{
-		this.month = month;
-	}
-
-	public void setDay (int day)
-	{
-		this.day = day;
-	}
-
-	public void setCandle (Candle candle)
+	//Set method
+	public void setCandle(Candle candle)
 	{
 		this.candle = candle;
 	}
@@ -88,13 +58,21 @@ public class Archangel
 		return this.day;
 	}
 
-
 	public Candle getCandle ()
 	{
 		return this.candle; 
 	}
 
 	//FR
+
+	/**This method creates and then returns a candle.<br>
+	*<b>Post:</b>A candle is created.
+	*@param color. String with the color of the candle. 
+	*@param size. A number representing the size of the candle. Must be between 1 and 3.
+	*@param essence. A String with the essence of the candle.
+	*@param illuminanceDegree. A Rational number representing the illuminance degree of the candle. In lux.
+	*@return A candle object. 
+	*/
 	public Candle createCandle (String color, int size, String essence, double illuminanceDegree)
 	{
 		Candle candle = new Candle (color, size, essence, illuminanceDegree);

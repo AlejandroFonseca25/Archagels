@@ -28,7 +28,13 @@ public class Menu
 	//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 	// 															Main Menu
 	//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-	public void mainMenu  ()
+	
+	/**This method prints the main interface of the app, and opens sub-interfaces based on a number given by the user. 
+	*Loops until the user stop it.<br>
+	*<b>Pre:</b> A Menu object is instantiated.<br>
+	*<b>Post:</b> The interface was printed.<br>
+	*/
+	public void mainMenu ()
 	{
 		boolean on = true; 
 		int angelNumber = 3;
@@ -72,6 +78,15 @@ public class Menu
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$	
 //																Creation menu
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+	
+	/**This method prints and reads the requirements for the creation of an archangel. It checks every requirement submitted in search
+	*of any error, and then adds 1 to the archangel counter. <br>
+	*<b>Post:</b> The requirements were printed and loaded. Archangel counter is raised by 1.
+	*The requirements were printed, but in the load, one was invalid. Archangel counter stays the same.<br>
+	*@param angelNumber. Archangel counter. 
+	*@return angelNumber raised by 1.
+	*Same angelNumber (in case of an error).
+	*/
 	public int creationMenu (int angelNumber)
 	{
 		boolean good; 
@@ -130,14 +145,18 @@ public class Menu
 							String essence = reader.nextLine();
 
 							System.out.println("\nEnter the illuminance degree of the candle.");
-							
 							double illuminanceDegree = reader.nextDouble();
 
+							good = maximumSuperior.illuminanceValidator(illuminanceDegree);
+
+							if (good == true)
+							{
 							maximumSuperior.addArchangel(name, photo, prayer, power, month, day, color, size, essence, illuminanceDegree);
 
 							System.out.println("\n~~~| The archangel was successfully created. |~~~");
 							angelNumber += 1;
 							return angelNumber;
+							}	
 						}
 					}
 				}
@@ -150,6 +169,11 @@ public class Menu
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$	
 //																Detail menu
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+	
+	/**This method prints and reads the conditions for printing the details of an archangel.<br>
+	<b>Post:</b> The name/power was loaded and the details were printed.
+	*The name/power was loaded but an error is printed.<br>
+	*/
 	public void searchMenu ()
 	{
 		System.out.println("                                 <<<Archangel detail menu>>>                                 ");
@@ -163,6 +187,12 @@ public class Menu
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$	
 //																Dates mneu
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+	
+	/**This method prints the options of searching dates, reads an integer given by the user, and if the integer is 1, it also reads
+	*a month given by the user.<br>
+	*<b>Post:</b> The dates were printed.
+	*An error message is printed.
+	*/
 	public void datesMenu ()
 	{
 		int decision = 0;
@@ -212,6 +242,9 @@ public class Menu
 		}
 	}
 
+	/**This method loads default archangels in a legion.<br>
+	*<b>Post:</b> The archangels are loaded.
+	*/
 	public void init ()
 	{
 		maximumSuperior.addArchangel ("Gabriel", "https://www.archangels.com/photos/gabriel.jpeg", "Glorioso Arcangel Gabriel, fortaleza de Dios, principe entre los espiritus angelicos, representante del Altisimo, que fuiste escogido para anunciar a la Santisima Virgen la Encarnacion: yo te suplico que ruegues a Dios por mi, para logre gozar el fruto de la redencion divina en la gloria del Cielo. Amen.", "Comunication", 3, 18, "Yellow", 2, "Vanilla", 10.5);
